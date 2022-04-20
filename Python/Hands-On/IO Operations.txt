@@ -1,0 +1,65 @@
+1.
+
+
+with open('filename.txt') as f:
+    contents = f.read()
+    print(contents)
+
+
+
+2.
+
+
+with open("datafile") as myfile:
+    head = [next(myfile) for x in range(N)]
+print(head)
+
+
+
+
+3.
+
+with open("test.txt", "a") as myfile:
+    myfile.write("appended text")
+
+
+
+4.
+
+
+with open("file.txt") as file_in:
+    lines = []
+    for line in file_in:
+        lines.append(line)
+
+
+
+5.
+
+
+def longest_words(filename):
+    with open(filename, 'r') as infile:
+        words = infile.read().split()
+    max_len = len(max(words, key=len))
+    return [word for word in words if len(word) == max_len]
+ 
+print(longest_words('about.txt'))
+
+
+
+
+6.
+
+
+fname = input("Enter file name: ")
+word=input("Enter word to be searched:")
+k = 0
+ 
+with open(fname, 'r') as f:
+    for line in f:
+        words = line.split()
+        for i in words:
+            if(i==word):
+                k=k+1
+print("Occurrences of the word:")
+print(k)
