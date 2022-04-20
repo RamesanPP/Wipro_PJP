@@ -1,0 +1,59 @@
+1.
+
+message = input("Type word: ")
+print("Upper Letters: ", sum(1 for c in message if c.isupper()))
+print("Lower Letters: ", sum(1 for c in message if c.islower()))
+
+
+2.
+
+def isPalindrome(s):
+    return s == s[::-1]
+ 
+ 
+# Driver code
+s = "malayalam"
+ans = isPalindrome(s)
+ 
+if ans:
+    print("Yes")
+else:
+    print("No")
+
+
+3.
+
+def New(msg):
+    return msg[0:2]*len(msg)
+
+message = input("Type word: ")
+print(New(message))
+
+
+4.
+
+def New(msg):
+    if msg[0]=='x':
+        msg=msg[1:]
+    if msg[len(msg)-1]=='x':
+        msg=msg[0:len(msg)-1]
+    else:
+        return msg
+    return msg
+
+message = input("Type word: ")
+print(New(message))
+
+
+
+5.
+
+def New(s,n):
+    s=s[len(s)-n:]
+    c=""
+    for i in range(n):
+        c+=s
+    return c
+s = input("Type word: ")
+n = int(input("Type int: "))
+print(New(s,n))

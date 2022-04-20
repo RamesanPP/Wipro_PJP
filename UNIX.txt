@@ -1,0 +1,49 @@
+1. 	touch test123
+	chmod go-w test123
+
+2. 	mkdir newdir
+	chmod u+rwx,go-rwx newdir
+
+3.	touch a | touch b | touch c
+	cp {a,b,c} newdir
+
+4. 	mv {a,b,c} newdir
+
+5.	ln -s test123 test123-sl
+
+6. 	NO
+
+7. 	ln test123 test123-hl
+
+8. 	YES
+
+9. 	ln -s newdir newdir-sl
+
+10. 	NO
+
+11.	umask o-rwx
+
+12. 	"bad blocks" :   /dev/pts, /sys, /proc, /sys/kernel/security ,etc...
+
+13. 	ls -ld .?* /bin
+
+15.	ls -lt	
+
+16.	ls -ltr
+
+17.	ls -d ~
+
+18.	ls -ld .?* ~
+
+19.	Yes, to the directory itself and the parent directory.
+
+20. 	. and ..
+
+21.	gzip a
+	gzip -d a
+
+22.	tar -cvf {-type f -name "[a-k]*"}
+
+23.	ls /?????
+
+24.	ls -R /* > filename

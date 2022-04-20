@@ -1,0 +1,37 @@
+1.
+
+thistuple = ("apple", "banana", "cherry", "apple", "cherry")
+print(thistuple[4], thistuple[-4])
+
+
+
+2.
+
+t = ("apple", "banana", "cherry", "apple", "cherry")
+for i in t:
+    if(i=='apple'):
+        print ('exists')
+        break
+
+
+3.
+
+def convert(list):
+    return tuple(list)
+  
+# Driver function
+list = [1, 2, 3, 4]
+print(convert(list))
+
+
+4.
+
+t = ("apple", "banana", "cherry", "apple", "cherry")
+index = t.index('banana')
+print(index)
+
+
+5.
+
+l = [(10, 20, 40), (40, 50, 60), (70, 80, 90)]
+print([t[:-1] + (100,) for t in l])

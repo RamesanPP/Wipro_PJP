@@ -1,0 +1,44 @@
+1.
+
+languages = {'Python', 'Java', 'English'}
+
+# remove English from the set
+languages.remove('English')
+
+print(languages)
+
+
+
+2.
+
+x = {"apple", "banana", "cherry"}
+y = {"google", "microsoft", "apple"}
+
+z = x.intersection(y)
+
+print(z) 
+
+
+
+3.
+
+x = {"apple", "banana", "cherry"}
+y = {"google", "microsoft", "apple"}
+
+z = x.union(y)
+
+print(z) 
+
+
+4.
+
+def MAX(sets):
+    return (max(sets))
+    
+def MIN(sets):
+    return (min(sets))
+    
+# Driver Code
+sets = set([8, 16, 24, 1, 25, 3, 10, 65, 55])
+print(MAX(sets))
+print(MIN(sets))

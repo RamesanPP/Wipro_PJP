@@ -1,0 +1,57 @@
+1.
+
+MyList1 = [1,2,3,4,5]
+print (MyList1)
+print (MyList1[3])
+print (MyList1[1])
+
+
+2.
+
+MyList1 = [1,2,3,4,5]
+MyList1.append(4)
+print (MyList1)
+
+
+3.
+
+MyList1 = [1,2,3,4,5]
+MyList1.reverse()
+print (MyList1)
+
+
+4.
+
+MyList1 = [1,2,3,4,2,5,2]
+print (MyList1.count(2))
+
+
+5.
+
+
+MyList1=[1,2,3,4,5]
+MyList2=[6,9]
+MyList1=MyList2+MyList1
+print(MyList1)
+
+
+6.
+
+MyList2=[6,9]
+MyList2.insert(1, 2)
+print(MyList2)
+
+
+7.
+
+
+MyList1=[1,2,3,4,5]
+del MyList1[1]
+print(MyList1)
+
+
+8.
+
+MyList1=[1,2,3,4,2,5,2]
+MyList1.remove(2)
+print(MyList1)
