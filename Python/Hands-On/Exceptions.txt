@@ -1,0 +1,75 @@
+1.
+
+
+number1=int(input("Enter the first number: "))
+number2=int(input("Enter the second number: "))
+
+try:
+    result=number1/number2;
+except Exception as e:
+    print(e)
+else:
+    print(result)
+
+
+
+2.
+
+
+
+try:
+    num=int(input("Enter the first number: "))
+except Exception as e:
+    print(e)
+    print("Enter A Number")
+else:
+    flag = False
+    if num > 1:
+    # check for factors
+        for i in range(2, num):
+            if (num % i) == 0:
+            # if factor is found, set flag to True
+                flag = True
+                # break out of loop
+                break
+
+    if flag:
+        print(num, "is not a prime number")
+    else:
+        print(num, "is a prime number")
+
+
+
+3.
+
+
+fname = input("Enter file name: ")
+
+try:
+    open(fname, 'r')
+except Exception as e:
+    print(e)
+else:
+    with open('filename.txt') as f:
+        contents = f.read()
+        print(contents)
+
+
+
+
+4.
+
+
+l=[1,2,3,4,5,6,7,8,9,10]
+index=int(input("Enter index: "))
+try:
+    l[index]
+except Exception as e:
+    print(e)
+else:
+    if l[index]==0:
+        print ("zero")
+    elif l[index]>0:
+        print ("positive")
+    else:
+        print ("negative")
