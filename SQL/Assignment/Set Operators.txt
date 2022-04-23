@@ -1,0 +1,26 @@
+1.
+SELECT DISTINCT job,
+      SUM(CASE deptno WHEN  10 THEN  sal  END)  "Dept 10",
+       SUM(CASE deptno WHEN  20 THEN  sal  END)  "Dept 20",
+      SUM(CASE deptno WHEN  30 THEN  sal  END)  "Dept 30",
+      SUM(sal)  "Total"
+FROM emp
+GROUP BY job;
+
+
+2.
+select deptno, '', sum(sal) from emp group by deptno
+union
+select deptno, job, sum(sal) from emp group by deptno, job
+
+
+3.
+select job, deptno
+from (
+  select job, deptno, 2 as o from emp where deptno = 10
+  union
+  select job, deptno, 1 from emp where deptno = 20
+  union 
+  select job, deptno, 3 from emp where deptno = 30
+) x
+order by o

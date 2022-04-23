@@ -12,3 +12,64 @@ SELECT UPPER(LEFT(ename,1))+LOWER(SUBSTRING(ename,2,LEN(ename))) as Emp name, LE
 
 5.
 SELECT * from emp where LEFT(lname,1) = user.prompt;
+
+6.select ename, round(datediff(month, hiredate, getdate())) as MONTHS_WORKED from emp order by MONTHS_WORKED;
+
+7.
+select sal*3 as Dream Salaries from emp;
+
+8.
+select lname, '$' + (REPLICATE('0',15-LEN(RTRIM(sal)))) + RTRIM(sal) as SALARY from emp;
+
+9.
+SELECT
+D_Srv, To_Char( D_6,'D')
+, D_6 , To_Char( D_6,'D')
+, CASE WHEN To_Char( D_6+0,'D') = '1' THEN D_6
+WHEN To_Char( D_6+1,'D') = '1' THEN D_6+1
+WHEN To_Char( D_6+2,'D') = '1' THEN D_6+2
+WHEN To_Char( D_6+3,'D') = '1' THEN D_6+3
+WHEN To_Char( D_6+4,'D') = '1' THEN D_6+4
+WHEN To_Char( D_6+5,'D') = '1' THEN D_6+5
+ELSE D_6+6
+END hdate
+FROM
+( SELECT lname, hdate, hdate D_Srv, Add_Months(hdate,6) D_6 FROM DUAL.FORMAT( to_char(hdate,'Day')||' , the'||to_char(hdate,'Ddspth')||' of '||
+to_char(hdate,'Month, yyyy')) as REVIEW from emp);
+
+
+10.
+select lname, hdate, DAYOFWEEK(hdate) as DAY from emp 
+ORDER BY 
+     CASE
+          WHEN Day = 'Sunday' THEN 7
+          WHEN Day = 'Monday' THEN 1
+          WHEN Day = 'Tuesday' THEN 2
+          WHEN Day = 'Wednesday' THEN 3
+          WHEN Day = 'Thursday' THEN 4
+          WHEN Day = 'Friday' THEN 5
+          WHEN Day = 'Saturday' THEN 6
+     END ASC ;
+
+
+11.
+select lname,  IF(commission, commission, "No Commission") as COMM from emp ;
+
+12.
+select (LEFT(lname, 8), REPEAT('*', FLOOR(salary/1000))) as EMPLOYEES_AND_THEIR_SALARIES
+FROM emp
+ORDER BY salary DESC;
+
+
+13.
+SELECT job_id, decode (job_id,’PRESIDENT’,’A’,’MANAGER’,’B’,’SALESMAN’,’C’,’CLERK’,’D’)GRADEFROM employees;
+
+
+14.
+select job_id, CASE
+          WHEN job_id = 'A' THEN PRESIDENT
+          WHEN job_id = 'B' THEN MANAGER
+          WHEN job_id = 'C' THEN SALESMAN
+          WHEN job_id = 'D' THEN CLERK
+     END 
+FROM employees ;

@@ -1,0 +1,83 @@
+1.
+select e.EMPNO, e.ENAME, e.SAL, d.DNAME, d.LOC  
+from EMP e
+natural join DEPT d;
+
+
+2.
+select e.JOB, e.MGR, e.SAL, e.COMM, d.DNAME from EMP e, DEPT p where EMP.DNAME = d.DNAME and e.JOB = 'SALESMAN' ;
+
+
+3.
+select e.ENAME, e.JOB, d.DEPTNO, d.DNAME from e.EMP, d.DEPT where e.DEPTNO = d.DEPTNO and d.LOC = 'DALLAS' ;
+
+
+4.
+select e.ename as Employee, e.empno as Emp#, m.mgrname as Manager, m.mgrnum as Mgr# from emp e, mgr m where e.mgrnum = m.mgrnum ;
+
+5.
+select e.ename as Employee, e.empno as Emp#, m.mgrname as Manager, m.mgrnum as Mgr# 
+FROM employees e
+LEFT OUTER JOIN managers m
+ON (e.manager_id = m.employee_id);
+
+
+6.
+DESC SALGRADE;
+
+select e.name, e.job, d.depname, e.sal, e.grade from emp e, dept p ;
+
+
+7.
+select e.ENAME, d.DNAME from EMP e;
+
+
+SELECT D.DNAME
+FROM DEPT D
+WHERE
+ NOT EXISTS (SELECT * FROM EMP E WHERE D.DEPTNO = E.DEPTNO) ;
+
+
+8.
+SELECT e.name, e.hiredate 
+FROM (select e.*, m.hiredate as mgr_hiredate,
+             min(salar) over (partition by job) as min_salar
+      from emp e left join
+           emp em
+           on e.mgr = m.empno
+     ) em
+where hiredate < mgr_hiredate and salar = min_salar;
+
+
+
+9.
+SELECT e.EMPNO, e.ENAME, d.DNAME, d.LOC
+FROM EMPLOYEES e JOIN DEPARTMENTS d
+USING(DEPT_ID)
+WHERE e.JOB = 'CLERK' ;
+
+
+10.
+SELECT e.ENAME, e.SAL, d.MGR, d.DNAME
+FROM employees e JOIN departments d
+ON (e.department_id = d.department_id);
+
+
+11.
+SELECT e.EMPNO, e.ENAME, e.JOB, d.DEPTNO, d.DNAME, d.LOC
+FROM employees e
+LEFT JOIN departments d ON e.dept_id = d.dept_id ;
+
+
+12.
+SELECT e.ENAME, d.DNAME, d.LOC
+FROM EMPLOYEES e
+RIGHT JOIN DEPARTMENTS d ON e.Dept_ID = d.Dept_ID
+ORDER BY Orders.OrderID;
+
+
+13.
+SELECT e.EMPNO, d.DNAME, d.LOC
+FROM Employees e
+FULL OUTER JOIN Departments d ON e.DeptID=d.DeptID ;
+

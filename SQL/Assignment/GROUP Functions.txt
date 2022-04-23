@@ -1,0 +1,55 @@
+1.
+SELECT MAX(salary) 'Maximum',
+MIN(salary) 'Minimum',
+SUM(salary) 'Sum',
+AVG(salary) 'Average'
+FROM employees;
+
+
+2.
+SELECT ROUND(MAX(salary),0) 'Maximum',
+ROUND(MIN(salary),0) 'Minimum',
+ROUND(SUM(salary),0) 'Sum',
+ROUND(AVG(salary),0) 'Average'
+FROM employees;
+
+
+3.
+SELECT MAX(salary) 'Maximum',
+MIN(salary) 'Minimum',
+SUM(salary) 'Sum',
+AVG(salary) 'Average'
+FROM employees
+GROUP BY jobtype;
+
+
+4.
+SELECT job,COUNT(*) As "No of employees"
+FROM emp
+GROUP BY job;
+
+
+5.
+SELECT COUNT(mgr) As "Number of Managers"
+FROM emp ;
+
+
+6.
+select MAX(salary)-MIN(salary) as DIFFERENCE from employees ;
+
+
+7.
+SELECT manager_id, MIN(salary)
+FROM employees
+WHERE manager_id IS NOT NULL 
+AND MIN(salary) <= 2000
+GROUP BY manager_id
+ORDER BY MIN(salary) DESC;
+
+
+8.
+SELECT COUNT(emp_id) as 'TOTAL_EMPLOYEES',
+COUNT(DECODE(to_char(hire_date,'YYYY'), 1980, 'c1')) "Hired in 1980",
+COUNT(DECODE(to_char(hire_date,'YYYY'), 1981, 'c2')) "Hired in 1981",
+COUNT(DECODE(to_char(hire_date,'YYYY'), 1982, 'c3')) "Hired in 1982",
+FROM employees;
