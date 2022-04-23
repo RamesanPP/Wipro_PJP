@@ -1,0 +1,125 @@
+1.
+CREATE TABLE dept1 (
+    DEPTNO int PRIMARY KEY,
+    DNAME varchar2(30) NOT NULL,
+    LOC varchar2(30) NOTNULL
+);
+
+
+2.
+CREATE TABLE emp1 (
+    EMPNO int PRIMARY KEY,
+    ENAME varchar2(20) NOT NULL,
+    SAL NUMBER(10,2) check(SAL>5000),
+    MGR NUMBER FOREIGN KEY(EMPNO),
+    DEPTNO INTEGER FOREIGN KEY(DEPTNO)
+);
+
+
+3.
+CREATE TABLE dept11
+  AS (SELECT * FROM dept1);
+
+CREATE TABLE emp11
+  AS (SELECT * FROM emp1);
+
+
+4.
+ALTER TABLE Emp1 ADD Address varchar2(30) ;
+
+
+5.
+ALTER TABLE Emp1
+RENAME COLUMN "SAL" TO "SALARY";
+
+
+6.
+ALTER TABLE Emp1
+RENAME COLUMN "MGR" TO "MANAGER" and COLUMN "DEPTNO" TO "DEPT_NO";
+
+
+7.
+ALTER TABLE Emp1
+MODIFY ENAME varchar2(40) NOT NULL;
+
+8.
+ALTER TABLE Emp1
+MODIFY ENAME varchar2(40);
+
+
+9.
+-- Depts of WIPRO
+SELECT * FROM Dept1;
+
+
+10.
+-- Deptno of WIPRO
+SELECT Deptno FROM Dept1;
+
+11.
+-- Employees of WIPRO
+SELECT * FROM Emp1;
+
+12.
+-- Empno of WIPRO
+SELECT Empno FROM Emp1;
+
+13.
+SELECT * FROM Dept1;
+SELECT Deptno FROM Dept1;
+SELECT * FROM Emp1;
+SELECT Empno FROM Emp1;
+
+
+14.
+alter table Emp1 set unused (sal, ename);
+
+15.
+alter table Emp1 drop unused columns;
+
+16.
+DROP TABLE Emp1, Dept1;
+
+17.
+CREATE TABLE Emp1
+  AS (SELECT * FROM EMP);
+
+DESC Emp1;
+
+
+18.
+RENAME Emp1 TO EMP_Test ;
+
+19.
+TRUNCATE TABLE EMP_Test; 
+
+DESC EMP_Test;
+
+
+20.
+CREATE TABLE Emp2
+  AS (SELECT Empno, Ename, sal FROM EMP);
+
+21.
+DROP TABLE Emp2;
+
+22.
+Select Top 0 * into Emp2 from Emp;
+
+23.
+DROP TABLE Emp2;
+
+24.
+
+select *
+from Emp2 as of timestamp (systimestamp -interval '15' minute);
+
+DESC Emp2;
+
+
+25.
+RENAME Emp2 as of timestamp (systimestamp -interval '15' minute) TO EMP2_1; 
+
+
+26.
+DESC *;

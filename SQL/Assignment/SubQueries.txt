@@ -1,0 +1,71 @@
+1.
+select EMPNO, ENAME, DEPTNO from EMPLOYEES e where (select DEPTNO from EMPLOYEES) = DEPTNO ;
+
+
+2.
+select EMPNAME from EMPLOYEES where SAL > (select AVG(SAL) from EMPLOYEES) ;
+
+
+3.
+select ENAME, JOB from EMPLOYEES where exists (select JOB from EMPLOYEES where JOB = 'MANAGER') ;
+
+
+4.
+select all ENAME from EMPLOYEES where SAL < (select MIN(SAL) from EMPLOYEES where DEPTNO = 10) ;
+
+
+5.
+select distinct ENAME from EMPLOYEES where (select DEPTNO from EMPLOYEES) = DEPTNO and (select MGR from EMPLOYEES) = MGR ;
+
+
+6.
+select EMPNO, ENAME from EMPLOYEES where DEPT having (select ename from EMPLOYEES where ENAME like %r% ) ;
+
+
+7.
+select ename, deptno, job from employees where loc = 'NEW YORK';
+
+
+8.
+select ename, deptno, job from employees where loc = '<user.prompt>';
+
+
+9.
+select ename, salary from employees where dept = (select dept from employees where mgr = 'KING') ;
+
+
+10.
+select ename from employees where dept = (select dept from employees where ename = 'JAMES');
+
+
+11.
+select all ename from employees e where sal < (select AVG(sal) from employees where dept = e.dept) ;
+
+
+12.
+select LOC, AVG(salary) from employees.(select distinct loc from employees) ;
+
+
+13.
+select salary from (select salary from employees order by salary desc) where ROWNUM <= N ;
+
+
+14.
+select * from (select * from employees order by empid desc limit N) where ROWNUM = N ;
+
+
+15. 
+select ename from employees where loc = 'DALLAS' order by ename ;
+
+
+16.
+select ename, d.AVG(sal) from employees e where sal < (select AVG(sal) from employees d where dept = e.dept) ;
+
+
+17.
+WITH temporaryTable(averageValue) as
+    (SELECT avg(Salary)
+    from DEPT)
+        SELECT LOC
+        FROM Employee, temporaryTable 
+        WHERE SUM(DEPT.Salary) < temporaryTable.averageValue;
