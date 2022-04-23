@@ -1,0 +1,134 @@
+1.
+CREATE TABLE EmpTest
+  AS (SELECT * FROM Emp);
+
+
+2.
+INSERT INTO EmpTest(Empno, Ename, Sal)
+VALUES 1, <current.user>, 15000;
+
+
+3.
+UPDATE EmpTest
+SET Sal = Sal * 0.15
+WHERE Ename = 'TURNER';
+
+
+4.
+UPDATE EMPTEST 
+SET Salary = (Select Salary from EMPTEST where Enaem= 'Scott') 
+WHERE Ename = 'Smith';
+
+
+5.
+Update EMPTEST
+SET Salary = Salary*0.10
+WHERE LOC = 'NEW YORK';
+
+6.
+ALTER TABLE EMPTEST
+DROP COLUMN Comm;
+
+7.
+DELETE * FROM EMPTEST WHERE dept = 'SALES';
+
+8.
+DELETE * FROM EMPTEST 
+WHERE dept = (select dept from EMPTEST where ename = '<user.prompt>') 
+and ename != '<user.prompt>';
+
+9.
+CREATE TABLE Emp2
+  AS (SELECT Empno, Ename, sal
+      FROM Emp WHERE 1=2);
+
+10.
+CREATE TABLE Emp3
+  AS (SELECT Empno, Job
+      FROM Emp WHERE 1=2);
+
+11.
+INSERT ALL
+  INTO Emp2 VALUES (select * from Emp)
+  INTO Emp3 VALUES (select * from Emp) ;
+
+12.
+TRUNCATE TABLE Emp2 ;
+
+INSERT INTO Emp2 VALUES (7788, SMITH, 4500), (7654, JACK, 3500);
+
+
+13.
+BEGIN TRANSACTION;
+{a set of SQL statements};
+COMMIT TRANSACTION;
+
+14.
+MERGE Emp2 AS TARGET
+    USING Emp AS SOURCE 
+INSERT (Empno, ENAME, SAL)         
+         VALUES (SOURCE.Empno, SOURCE.ENAME, SOURCE.SAL)
+UPDATE
+        SET TARGET.Empno = SOURCE.Empno,
+	TARGET.ENAME = SOURCE.ENAME,
+        TARGET.SAL = SOURCE.SAL ;
+
+15.
+DESC Emp2;
+
+16.
+ROLLBACK;
+
+17.
+MERGE Emp2 AS TARGET
+    USING Emp AS SOURCE 
+INSERT (Empno, ENAME, SAL)         
+         VALUES (SOURCE.Empno, SOURCE.ENAME, SOURCE.SAL) where SOURCE.SAL > 3000
+UPDATE
+        SET TARGET.Empno = SOURCE.Empno,
+	TARGET.ENAME = SOURCE.ENAME,
+        TARGET.SAL = SOURCE.SAL 
+	WHERE TARGET.Empno = 7788;
+
+18.
+DESC Emp2;
+
+
+19.
+GRANT CONNECT TO WIPRO IDENTIFIED BY password;
+
+20.
+GRANT ALL PRIVILEGES ON EMP FROM 'SCOTT' TO 'WIPRO';
+
+
+21.
+DELETE * FROM EMP WHERE deptno = 10;
+
+22.
+DELETE * FROM SCOTT.EMP WHERE deptno = 10;
+
+THE ROWS ARE DELETED AS WIPRO IS GRANTED ALL PERMISSION.
+
+23.
+system mysql -u 'SCOTT' -p
+ROLLBACK;
+system mysql -u "WIPRO" -p
+DESC *;
+
+24.
+SELECT * FROM EMP WHERE Empno = 1 FOR UPDATE 	
+WAITFOR DELAY '00:00:20';
+
+
+25.
+system mysql -u 'WIPRO' -p
+ROLLBACK;
+system mysql -u 'SCOTT' -p
+DESC *;
+
+
+26.
+system mysql -u 'WIPRO' -p
+ROLLBACK;
+system mysql -u 'SCOTT' -p
+ROLLBACK;
