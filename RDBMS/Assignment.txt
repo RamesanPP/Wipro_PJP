@@ -1,0 +1,58 @@
+1.
+
+
+Table is in 1st Normal Form
+
+-- EMPNO, ENAME, SAL, DEPTNO, DNAME, LOC
+
+
+We can make it into 2nd Normal Form
+
+-- EMPLOYEE
+----EMPNO, ENAME, SAL, DEPTNO
+
+
+--DEPARTMENT
+-----DEPTNO, DNAME, LOC
+
+
+
+
+2.
+
+
+Table is in 1st Normal Form
+
+-- ROLL, NAME, AGE, EXAM, MARKS, GRADE
+
+
+We can make it into 2nd Normal Form
+
+-- STUDENT
+----ROLL, NAME, AGE, EXAM
+
+
+--EXAM
+----EXAM, MARKS, GRADE
+
+
+
+3.
+
+Table contains two Primary Keys
+Table is in 2nd Normal Form
+
+-- EMPNO, PROJECT_NO, NO_OF_DAYS, CUSTOMERNAME
+
+
+We can make it into 3rd Normal Form
+
+-- EMPLOYEE
+----EMPNO, PROJECT_NO
+
+
+--PROJECT
+----PROJECT_NO, NO_OF_DAYS, CUSTOMERNAME
+
+
+

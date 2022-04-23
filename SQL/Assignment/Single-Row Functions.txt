@@ -1,0 +1,14 @@
+1.
+select getdate() as date;
+
+2.
+select empno, lname, sal, sal*0.155 as New Salary from emp;
+
+3.
+select empno, lname, sal, sal*0.155 as New Salary, New Salary - sal as Increase from emp;
+
+4.
+SELECT UPPER(LEFT(ename,1))+LOWER(SUBSTRING(ename,2,LEN(ename))) as Emp name, LEN(ename) as length FROM emp where LEFT(ename,1) = J or LEFT(ename,1) = A or LEFT(ename,1) = M;
+
+5.
+SELECT * from emp where LEFT(lname,1) = user.prompt;

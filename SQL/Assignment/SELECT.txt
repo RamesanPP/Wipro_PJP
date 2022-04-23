@@ -1,0 +1,13 @@
+1.
+
+Desc DEPT;
+
+
+2.
+
+Desc EMP;
+
+
+3.
+
+Select Ename and Deptno from Emp where Empno is 7788;

@@ -1,0 +1,62 @@
+1.
+Select Ename, Sal, Comm from Emp where commission > 0 order by Sal, Comm DESC;
+
+2.
+select distinct jobcode from EMP;
+
+3.
+SELECT empno, empname, job, hire AS Emp #, Employee, Job, Hire Date
+FROM EMP;
+
+
+4.
+SELECT CONCAT(lastname, ", ", jobid) AS Employee and Title
+FROM EMP; 
+
+
+5.
+Select CONCAT(*,",") AS THE_OUTPUT from EMP;
+
+
+6.
+select ename, job, hiredate from emp where ename="SCOTT" or ename="TURNER" order by hiredate asc;
+
+
+7.
+select ename, deptno from emp where deptno=20 or deptno=30 order by ename asc;
+
+
+8.
+select lname, sal from emp where (sal between 2000 and 3000) and (deptno=20 or deptno=30) as Employee, Monthly Salary;
+
+
+9.
+select lname, hiredate from emp where hiredate=1981;
+
+
+10.
+select ename, sal from emp where sal > user.prompt;
+
+
+11.
+select lname, jobtitle from emp where manager=null;
+
+
+12.
+select empno, ename, sal, deptno from emp where managerid='user.prompt' order by 'user.prompt';
+
+
+13.
+select empno, ename, sal, deptno from emp where mgr='user.prompt' order by 'user.prompt';
+
+
+14.
+select lname from emp where name like '__A%';
+
+
+15.
+select lname from emp where ename like '%A%S%';
+
+
+16.
+select name, job, sal from emp where job='CLERK' and (sal=800 or sal=950 or sal=1300);
