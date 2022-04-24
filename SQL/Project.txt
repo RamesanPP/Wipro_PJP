@@ -1,0 +1,106 @@
+1.
+CREATE TABLE EMP_Details (
+    Empno integer PRIMARY KEY,
+    First_Name varchar2(30) NOT NULL,
+    Last_Name varchar2(30) NOT NULL,
+    Lodge_Name varchar2(30) FOREIGN KEY(Lodge_Details)
+);
+
+
+CREATE TABLE EMP_Skill (
+    Empno integer PRIMARY KEY FOREIGN KEY(EMP_Details),
+    Skill varchar2(30) PRIMARY KEY FOREIGN KEY(Skill_Details),
+    Grade number(10)
+);
+
+
+CREATE TABLE SKILL_Details (
+    Skill varchar2(30) PRIMARY KEY,
+    Skill_Desc varchar2(30)
+);
+
+
+
+CREATE TABLE LODGE_Details (
+    Lodge_Name varchar2(30) PRIMARY KEY,
+    Lodge_Manager varchar2(30) NOT NULL,
+    Lodge_Address varchar2(30)
+);
+
+
+
+2.
+INSERT INTO LODGE_Details
+VALUES (Jessy Lodge, Rajan, Rakesh Nagar),
+(Rajesh Lodge, Rajani, Anna Nagar),
+(Gooday Lodge, John, Sea Road);
+
+
+INSERT INTO EMP_Details
+VALUES (101, James, Jackson, Rajesh Lodge),
+(102, Kalpash, Raj, Gooday Lodge),
+(103, Jasmine, Joy, Jessy Lodge);
+
+
+INSERT INTO SKILL_Details
+VALUES (Oracle, Oracle Corporation),
+(Dot Net, Microsoft),
+(Sybase, SAP Corporation);
+
+
+INSERT INTO EMP_skill
+VALUES (101, Oracle SQL, 9),
+(101, Sybase, 8),
+(102, Dot Net, 9),
+(103, Oracle SQL, 8);
+
+
+3.
+UPDATE EMP_Detail
+SET Lodge_Name = Gooday Lodge
+WHERE Empno = 101;
+
+
+4.
+DELETE FROM EMP_Details, EMP_skill 
+WHERE Empno = 103;
+
+
+5.
+a.
+SELECT First_Name, Last_Name FROM EMP_Details
+WHERE Empno = (SELECT Empno from EMP_skill WHERE Skill = 'Sybase');
+
+
+b.
+SELECT e.First_Name, s.Skill, l.Lodge_Manager FROM EMP_Details e
+LEFT JOIN EMP_skill s ON e.Empno = s.Empno
+LEFT JOIN LODGE_Details l ON e.Lodge_Name = l.Lodge_Name;
+
+
+c.
+SELECT COUNT(Skill) FROM EMP_skill 
+WHERE Empno = 101;
+
+
+d.
+SELECT e.First_Name FROM EMP_Details e
+LEFT JOIN EMP_skill s ON e.Empno = s.Empno
+WHERE s.Skill = 'Oracle SQL';
+
+
+6.
+CREATE VIEW EMP_VIEW AS
+SELECT e.Empno, e.First_Name, s.Skill, l.Lodge_Manager
+FROM EMP_Details e, EMP_skill s, LODGE_Details l;
+
+
+7.
+CREATE SYNONYM EMPV 
+FOR EMP_VIEW
+
+8.
+CREATE INDEX indX
+ON EMP_Skill (Skill);
+
+
