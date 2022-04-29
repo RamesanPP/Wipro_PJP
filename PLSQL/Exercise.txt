@@ -1,0 +1,6 @@
+ORACLE DATABASE SERVER
+
+1.
+select (Sal+NVL(Comm, 0)) as Netsal from EMP;
+
+
