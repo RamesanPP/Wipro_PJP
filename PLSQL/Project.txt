@@ -1,0 +1,76 @@
+1.
+CREATE TABLE Bank (
+    Account_Number integer PRIMARY KEY,
+    Bank_Name varchar2(20) NOT NULL,
+    Amount number(10,2) NOT NULL
+);
+
+
+
+2.
+CREATE PACKAGE BODY Bank_Transaction AS 
+   PROCEDURE NEW_ACCOUNT(Account_Number  customers.id%type, 
+      Bank_Name customers.Name%type, 
+      Amount  customers.amt%type) 
+   IS 
+   BEGIN 
+      INSERT INTO customers (id,name,amt) 
+         VALUES(Account_Number, Bank_Name, Amount); 
+
+   EXCEPTION  -- exception handlers begin
+
+   END NEW_ACCOUNT; 
+   
+   PROCEDURE Account_Transaction(Account_Number   customers.id%type,
+      Transaction_Amount, 
+      Transaction_Type) IS 
+   BEGIN 
+      IF Transaction_Type == 'Withdrawal' THEN
+	 IF Amount - Transaction_Amount > 5000 THEN
+	     Amount = Amount - Transaction_Amount
+	 ENDIF
+      ELSE
+         Amount = Amount + Transaction_Amount
+      ENDIF
+
+   EXCEPTION  -- exception handlers begin
+
+   END Account_Transaction;  
+   
+   PROCEDURE Close_Account(Account_Number   customers.id%type) IS 
+   BEGIN 
+      DELETE FROM customers 
+      WHERE id = Account_Number; 
+
+   EXCEPTION  -- exception handlers begin
+
+   END Close_Account;
+   
+END Bank_Transaction; 
+/
+
+
+3.
+CREATE TABLE Audit_Table (
+    Account_Number integer,
+    Transaction_Date Timestamp,
+    Transaction_Type (1)
+);
+
+
+
+4.
+CREATE TRIGGER display_changes 
+BEFORE DELETE ON customers AS D
+ OR INSERT ON customers AS I
+ OR UPDATE ON customers AS U
+FOR EACH ROW 
+WHEN (NEW.ID > 0); 
+
+BEGIN 
+   
+EXCEPTION  -- exception handlers begin
+    
+END; 
+/
+
